@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
     printf("Let's\n");
     printf("\tgo\n");
-    printf("\t\t to walk\n\n");
+    printf("\t\tto walk\n\n");
 
     printf("     *\n");
     printf("    ***\n");
