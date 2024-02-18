@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#define DEBUG_ (0)
+
 int get_file(size_t *size,char* filename);
 int main (void)
 {
@@ -34,10 +34,8 @@ int main (void)
         fgets(read_file,size+1,f);
         last_symbol = read_file[size-1];
         fclose(f);
-#if DEBUG_
         printf("Read_String is: %s\n", read_file);
-        printf("Las symbol is : %c\n",last_symbol);
-#endif
+        printf("Last symbol is : %c\n",last_symbol);
         for(cntr = 0; cntr < size - 1; cntr++)
         {
             if (read_file[cntr] == last_symbol)
@@ -71,9 +69,6 @@ int get_file(size_t *size, char* filename)
         fseek(f,0,SEEK_END);
         *size = ftell (f);
         fclose(f);
-#if DEBUG_
-        printf("File sizeof '%s' - %llu bytes.\n",filename, *size);
-#endif
     }
     else
     {

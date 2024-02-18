@@ -14,7 +14,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#define DEBUG_ (1)
 int get_file(size_t *size,char* filename);
 void compare_string (char arr_file[],size_t size);
 int main (void)
@@ -23,7 +22,7 @@ int main (void)
     };
     FILE *f;
     size_t size;        // size of two strings with ' '
-    char filename[BUF_SIZE] ={'0'};
+    char filename[50] ={'0'};
     char read_file[BUF_SIZE] = {'0'};
     int rtrn = 0;
     rtrn = get_file(&size,filename);
