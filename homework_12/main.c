@@ -33,15 +33,15 @@ int main(int argc, char* argv[])
                 puts("-d : Sort data by date, use with -f;");
                 break;
             case 'f':
-                printf("Name of <csv> file is \"%s\" ",optarg);
+                printf("Name of <csv> file is \"%s\" \n",optarg);
                 open_f = fopen(optarg, "r");
                 if (open_f == NULL)
                 { 
                     fclose(open_f);
+                    printf("Can't open your file: %s\n",optarg);
                     return 1;
                    
                 }   
-                puts("\nScanned:");
                 while ((r = fscanf(open_f,"%d;%d;%d;%d;%d;%d",&sensor_inf[ind].year,&sensor_inf[ind].month,&sensor_inf[ind].day,&sensor_inf[ind].hh,&sensor_inf[ind].mm,&sensor_inf[ind].t))>0)
                 {
                     cntr++;
@@ -53,12 +53,11 @@ int main(int argc, char* argv[])
                             ch = fgetc(open_f);
                         } while (EOF != ch && '\n'!=ch);
                         ch = 0;
-                        printf("Format error in line:%d\n",cntr);
+                        printf("Format error in line: %d\n",cntr);
                         ind--;   
                     }
                     else
                     {
-                        printf("%d = %d;%d;%d;%d;%d;%d\n",cntr,sensor_inf[ind].year,sensor_inf[ind].month,sensor_inf[ind].day,sensor_inf[ind].hh,sensor_inf[ind].mm,sensor_inf[ind].t);
                         ind++;
                     }
                 }
